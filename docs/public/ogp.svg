@@ -1,0 +1,31 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="36" fill="#FFF7ED"/>
+  <rect x="32" y="32" width="1136" height="566" rx="32" fill="url(#bg)"/>
+  <circle cx="1060" cy="118" r="84" fill="#ffffff" fill-opacity="0.08"/>
+  <circle cx="980" cy="532" r="118" fill="#ffffff" fill-opacity="0.08"/>
+  <g transform="translate(110 112)">
+    <rect width="208" height="208" rx="52" fill="white" fill-opacity="0.96"/>
+    <rect x="34" y="42" width="114" height="18" rx="9" fill="#FFE0B2"/>
+    <rect x="34" y="78" width="148" height="12" rx="6" fill="#FFCC80"/>
+    <rect x="34" y="104" width="126" height="12" rx="6" fill="#FFD54F"/>
+    <rect x="34" y="130" width="98" height="12" rx="6" fill="#90CAF9"/>
+    <circle cx="174" cy="150" r="30" fill="#1565C0"/>
+    <path d="M174 128L179 142H194L182 150L187 164L174 156L161 164L166 150L154 142H169L174 128Z" fill="#FFECB3"/>
+  </g>
+  <text x="380" y="236" fill="white" font-family="'Segoe UI', Arial, sans-serif" font-size="68" font-weight="700">
+    Repository Polish Skill
+  </text>
+  <text x="380" y="308" fill="#FFF3E0" font-family="'Segoe UI', Arial, sans-serif" font-size="30" font-weight="500">
+    README upgrades, bilingual docs, GitHub Pages, and release-ready repo polish
+  </text>
+  <text x="380" y="398" fill="#FFE0B2" font-family="'Segoe UI', Arial, sans-serif" font-size="26">
+    Codex skill for turning useful repos into polished public projects
+  </text>
+  <defs>
+    <linearGradient id="bg" x1="58" y1="44" x2="1116" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EF6C00"/>
+      <stop offset="0.52" stop-color="#FFB300"/>
+      <stop offset="1" stop-color="#1565C0"/>
+    </linearGradient>
+  </defs>
+</svg>
