@@ -26,6 +26,34 @@ For a public repo, also consider:
 - GitHub topics
 - stable social card assets
 
+## 🌐 Website and Topics Settings
+
+When a repository is meant to be public, set its metadata explicitly instead of leaving it blank.
+
+Typical GitHub CLI commands:
+
+```bash
+gh repo edit OWNER/REPO \
+  --description "Short repo summary" \
+  --homepage "https://OWNER.github.io/REPO/"
+```
+
+```bash
+gh repo edit OWNER/REPO \
+  --add-topic codex-skill \
+  --add-topic documentation \
+  --add-topic vitepress \
+  --add-topic github-pages
+```
+
+Use the homepage field as the repository Website value on GitHub. For docs-driven repos, that usually points at the published GitHub Pages URL.
+
+Choose topics that describe:
+
+- what the repository is
+- what tools or frameworks it uses
+- what kind of users should find it
+
 ## 📝 Commit Style
 
 Use English commit messages with:

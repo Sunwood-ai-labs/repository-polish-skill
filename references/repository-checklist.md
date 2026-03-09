@@ -19,9 +19,12 @@ Use this checklist when polishing a repository.
 ## GitHub repo polish
 
 - repository name matches intent
+- repository description is set
 - homepage is set
+- website field points to the published docs or project site
 - relevant topics are set
 - README badges match the project
+- social preview assets exist when the repo is meant to be shared publicly
 
 ## CI/CD
 
