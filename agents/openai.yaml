@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Polish"
+  short_description: "Polish a repo for docs, Pages, and public release"
+  default_prompt: "Use $repository-polish to improve a repository's README, docs, GitHub Pages setup, and public-facing structure."
