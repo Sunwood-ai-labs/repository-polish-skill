@@ -12,34 +12,49 @@
       <img src="https://img.shields.io/badge/Language-English-blue.svg" alt="English">
     </a>
     <a href="./README.ja.md">
-      <img src="https://img.shields.io/badge/%E8%A8%80%E8%AA%9E-%E6%97%A5%E6%9C%AC%E8%AA%9E-lightgrey.svg" alt="Japanese">
+      <img src="https://img.shields.io/badge/Language-Japanese-lightgrey.svg" alt="Japanese">
     </a>
   </p>
 </div>
 
-既存リポジトリを、公開向けに読みやすく整った形へ仕上げるための Codex skill です。README、日英ドキュメント、VitePress / GitHub Pages、CI、公開時の見せ方まで、必要な範囲で一貫して整えます。
+既存のリポジトリを、より公開向けで整った状態へ仕上げるための Codex skill です。README、日英ドキュメント、VitePress / GitHub Pages、CI、公開時の見た目や導線を、必要以上に過剰編集せず整えます。
 
-## 🧰 できること
+## できること
 
-- 編集前にリポジトリの状態を棚卸しする
-- `README.md` と `README.ja.md` を新規作成または改善する
-- 英語と日本語に対応した `docs/` を VitePress で整える
-- docs 向けの CI と GitHub Pages デプロイを追加する
-- badge、homepage、章構成など公開向けの見た目を整える
+- 変更前にリポジトリの状態を棚卸しする
+- `README.md` と `README.ja.md` を改善または新規作成する
+- VitePress ベースの `docs/` を追加または整理する
+- docs 用の CI や GitHub Pages workflow を整える
+- badge、homepage、topics、導線など公開向けの見た目を整える
 
-## 🧭 この skill がある理由
+## デフォルトの振る舞い
 
-コード自体は有用でも、公開したときに整って見えない repo は多いです。よくある不足は次のあたりです。
+ユーザーから明示的に「README だけ」などの限定がない限り、この skill はその環境で到達できる最高価値の完了状態まで持っていく前提で動きます。
+
+たとえば次のようなところまで進めます。
+
+- README と docs の整備
+- `.gitignore` や `LICENSE` など公開向けファイルの補完
+- 必要に応じた docs workflow や Pages 設定
+- description、homepage、topics など repo metadata の更新
+- ローカル検証
+- commit と push
+
+最後の一歩だけがプラン制約、権限、repo visibility などで止まる場合でも、そこで作業全体を止めず、残りは完了させたうえで blocker を明記します。
+
+## この skill がある理由
+
+コード自体は良くても、公開時には次のような理由で「未完成」に見える repo が多くあります。
 
 - README が薄い
 - 日本語版がない
-- 複数ページ docs がない
-- GitHub Pages で公開されていない
+- 閲覧しやすい docs がない
+- GitHub Pages 配信がない
 - 初見ユーザー向けの導線が弱い
 
-この skill は、そうした不足を繰り返し整えるための実践的な流れをまとめています。
+この skill は、そうした穴を埋めるための再利用可能な整備フローをまとめたものです。
 
-## 📦 リポジトリ構成
+## リポジトリ構成
 
 ```text
 repository-polish-skill/
@@ -61,9 +76,9 @@ repository-polish-skill/
    `- public/
 ```
 
-## 🚀 クイックスタート
+## クイックスタート
 
-### 1. 対象 repo を確認する
+### 1. 対象 repo を棚卸しする
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoPath D:\Prj\some-repo
@@ -75,19 +90,20 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 - `Use $repository-polish to add bilingual docs and GitHub Pages deployment.`
 - `Use $repository-polish to make this repository feel ready for public release.`
 
-## 🗂️ 整備できるもの
+## 改善できる対象
 
-- README の構成と quick start の分かりやすさ
+- README 構成と quick start の分かりやすさ
 - 英語と日本語のドキュメント整合
-- VitePress docs のひな形
-- CI と GitHub Pages の workflow
-- repo 名、リンク、badge、第一印象の polish
+- VitePress docs の土台
+- CI / GitHub Pages workflow
+- repo 名、リンク、badge、導線の polish
+- 検証、commit、push まで含む完走
 
-## 📚 ドキュメント
+## ドキュメント
 
 - English docs: [Project Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/)
 - 日本語 docs: [日本語ドキュメント](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
-- ローカル確認:
+- ローカル preview:
 
 ```bash
 cd docs
@@ -95,7 +111,8 @@ npm install
 npm run docs:dev
 ```
 
-## 🤝 補足
+## 補足
 
-- 依頼を満たす最小で一貫性のある改善セットを選ぶ前提で設計しています。
-- `logged-in-google-chrome-skill` を整備して公開した実作業の流れも土台にしています。
+- 最初は最小限の整備計画から始めますが、ユーザーが範囲を狭めていない限り途中では止まりません。
+- GitHub Pages がプランや visibility 制約で公開できない場合でも、公開可能な直前状態まで整えて blocker を記録します。
+- `logged-in-google-chrome-skill` など、実際の repo 整備フローで得た知見をもとにしています。

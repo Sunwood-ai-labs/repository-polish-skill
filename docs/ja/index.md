@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "Repository Polish"
-  text: "動く repo を、公開向けに整った repo へ。"
-  tagline: "README 改善、日英ドキュメント、GitHub Pages、公開導線までまとめて整える Codex skill です。"
+  text: "既存 repo を公開向けに整った repo へ。"
+  tagline: "README、日英 docs、GitHub Pages、そして最後の仕上げまで通すための Codex skill です。"
   image:
     src: /icon.webp
     alt: Repository Polish Skill
@@ -20,27 +20,28 @@ hero:
       link: https://github.com/Sunwood-ai-labs/repository-polish-skill
 
 features:
-  - title: README と docs の整理
-    details: README、README.ja、複数ページ docs を整えて、最初の印象と導線を分かりやすくします。
-  - title: Pages と CI の追加
-    details: VitePress と GitHub Actions を使って、継続的に更新しやすい docs 配信基盤を作ります。
-  - title: 公開向けの仕上げ
-    details: バッジ、リンク、構成、公開時の見せ方まで含めて repo 全体を整えます。
+  - title: README と docs の整備
+    details: README、README.ja、複数ページ docs を整え、初見でも分かりやすい導線を作ります。
+  - title: Pages と CI の整備
+    details: VitePress、GitHub Actions、GitHub Pages を使って docs の公開導線を整えます。
+  - title: 最後まで完走
+    details: metadata 更新、検証、commit、push、blocker の記録まで、ユーザーが範囲を狭めない限り最後まで進めます。
 ---
 
-## ✨ 概要
+## 概要
 
-`repository-polish` は、荒い状態のリポジトリや社内向けリポジトリを、公開しやすく読みやすい形へ整えるための実践的な skill です。
+`repository-polish` は、荒い repo や内向き repo を、共有しやすく理解しやすい状態まで整えるための実務向け skill です。
 
-README の刷新、日英 docs、VitePress、GitHub Pages、公開時の見せ方の調整といった作業を、ひとまとまりの流れとして扱います。
+README の再設計、日英 docs、VitePress、GitHub Pages、そして「最後の一歩で止まらない」仕上げ方まで含めて設計しています。
 
-## 🎯 こんな場面向け
+## こんな場面向け
 
 - コードはあるが見せ方が弱い repo
 - `README.md`、`README.ja.md`、閲覧しやすい docs が必要な skill repo
-- 個人利用や社内利用から、公開向けへ育てたいプロジェクト
+- 個人利用や社内利用から公開向けへ進めたいプロジェクト
+- 検証、commit、push まで含めて Codex に完走してほしい整備タスク
 
-## 🔗 クイックリンク
+## クイックリンク
 
 - [はじめに](/ja/guide/getting-started)
 - [使い方](/ja/guide/usage)

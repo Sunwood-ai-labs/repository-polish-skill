@@ -12,24 +12,39 @@
       <img src="https://img.shields.io/badge/Language-English-blue.svg" alt="English">
     </a>
     <a href="./README.ja.md">
-      <img src="https://img.shields.io/badge/%E8%A8%80%E8%AA%9E-%E6%97%A5%E6%9C%AC%E8%AA%9E-lightgrey.svg" alt="Japanese">
+      <img src="https://img.shields.io/badge/Language-Japanese-lightgrey.svg" alt="Japanese">
     </a>
   </p>
 </div>
 
 Turn an existing repository into a cleaner, more public-facing project. This skill helps Codex improve README files, bilingual documentation, VitePress or GitHub Pages setup, CI, and release-facing structure without over-editing the repo.
 
-## 🧰 Features
+## Features
 
-- Audit repository state before making changes
-- Improve or create `README.md` and `README.ja.md`
-- Add or refine bilingual `docs/` with VitePress
-- Set up CI and GitHub Pages deployment for docs
-- Tighten public-facing details such as badges, homepage links, and section structure
+- audit repository state before making changes
+- improve or create `README.md` and `README.ja.md`
+- add or refine bilingual `docs/` with VitePress
+- set up CI and GitHub Pages deployment for docs
+- tighten public-facing details such as badges, homepage links, topics, and section structure
 
-## 🧭 Why This Skill Exists
+## Default Behavior
 
-Many repositories already contain useful code, but still feel unfinished when shared publicly. The weak points are often the same:
+Unless the user explicitly asks for a narrow partial task, this skill should carry the repository through the highest-value finished state available in the environment.
+
+That usually means:
+
+- README and docs improvements
+- missing public-facing files such as `.gitignore` or `LICENSE`
+- docs workflows and Pages setup when relevant
+- repository metadata such as description, homepage, and topics
+- local verification
+- commit and push when access is available
+
+If the very last step is blocked by plan, permissions, or repo visibility, the skill should still finish everything else and document the blocker clearly instead of stopping early.
+
+## Why This Skill Exists
+
+Many repositories already contain useful code, but still feel unfinished when shared publicly. Common gaps include:
 
 - a thin README
 - no Japanese counterpart
@@ -39,7 +54,7 @@ Many repositories already contain useful code, but still feel unfinished when sh
 
 This skill packages a repeatable cleanup flow for those gaps.
 
-## 📦 Repository Layout
+## Repository Layout
 
 ```text
 repository-polish-skill/
@@ -61,7 +76,7 @@ repository-polish-skill/
    `- public/
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Inspect the target repository
 
@@ -75,15 +90,16 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 - `Use $repository-polish to add bilingual docs and GitHub Pages deployment.`
 - `Use $repository-polish to make this repository feel ready for public release.`
 
-## 🗂️ What It Can Improve
+## What It Can Improve
 
 - README structure and quick-start clarity
 - English and Japanese documentation alignment
 - VitePress docs scaffolding
 - GitHub Actions workflows for CI and Pages deployment
 - repo naming, links, badges, and landing-page polish
+- end-to-end completion through verification, commit, and push
 
-## 📚 Documentation
+## Documentation
 
 - English docs: [Project Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/)
 - Japanese docs: [日本語ドキュメント](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
@@ -95,7 +111,8 @@ npm install
 npm run docs:dev
 ```
 
-## 🤝 Notes
+## Notes
 
-- The skill prefers the smallest coherent set of improvements that satisfies the request.
+- The skill starts with the smallest coherent plan, but it should not stop early unless the user narrows the scope.
+- If GitHub Pages cannot be published because of plan or visibility limits, the skill should leave the repo in a ready-to-publish state and document the blocker.
 - It is based on practical repository work, including the publishing flow used for `logged-in-google-chrome-skill`.

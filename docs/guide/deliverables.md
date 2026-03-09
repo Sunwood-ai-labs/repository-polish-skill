@@ -1,6 +1,6 @@
 # Deliverables
 
-## 📦 Common Outputs
+## Common Outputs
 
 This skill often produces:
 
@@ -11,7 +11,7 @@ This skill often produces:
 - `.github/workflows/deploy-docs.yml`
 - repository homepage and topic recommendations
 
-## 🧩 README Improvements
+## README Improvements
 
 README work may include:
 
@@ -20,7 +20,19 @@ README work may include:
 - clearer quick start and repo layout
 - links to hosted docs
 
-## 🌍 Bilingual Docs Pattern
+## End-to-End Finish
+
+When the user does not explicitly ask for a partial task, the expected finish line usually includes:
+
+- verified docs builds when docs were added
+- checked workflow paths and Pages base
+- updated repo metadata when credentials are available
+- clean commit history in small recoverable steps
+- push to the configured remote when access is available
+
+If the final publish step is blocked by plan, permissions, or visibility, the repository should still be left in the closest possible ready state with that blocker documented.
+
+## Bilingual Docs Pattern
 
 When English and Japanese are both needed:
 
@@ -28,11 +40,3 @@ When English and Japanese are both needed:
 - use `README.ja.md` for Japanese
 - mirror page structure under `docs/guide/` and `docs/ja/guide/`
 - keep headings parallel even when wording is localized
-
-## ✅ Verification
-
-Before wrapping up:
-
-- run `npm run docs:build` inside `docs/` when docs were added
-- confirm workflow paths match the actual repository
-- confirm asset URLs and Pages base are correct
