@@ -2,6 +2,12 @@
 
 Use this checklist when polishing a repository.
 
+## Completion default
+
+- if the user did not explicitly ask for a partial task, treat the goal as an end-to-end repository polish
+- do not stop at README edits if docs, workflows, metadata, verification, or push are still unfinished
+- if the very last mile is blocked by plan, permissions, or repo visibility, finish everything else and document the blocker clearly
+
 ## Core files
 
 - `README.md`
@@ -37,4 +43,6 @@ Use this checklist when polishing a repository.
 - links resolve
 - docs URLs use the current repo name
 - README images use stable raw URLs or hosted assets
+- repository metadata is updated when credentials are available
+- workflows either run successfully or are intentionally gated with the limitation documented
 - git status is clean after commit and push

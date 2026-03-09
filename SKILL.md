@@ -11,8 +11,30 @@ Turn an existing repository into a clean, public-facing, documented project.
 
 1. Run [scripts/collect_repo_state.ps1](./scripts/collect_repo_state.ps1) against the target repository.
 2. Inspect the current README, docs, workflows, and repo metadata before editing anything.
-3. Choose the smallest set of improvements that satisfies the user request.
+3. Unless the user explicitly asks for a narrow partial update, treat "polish this repo" as a request to carry the repository through a complete public-facing finish.
 4. Verify each user-facing addition locally when possible before pushing.
+5. Finish the job end-to-end instead of stopping after the first visible improvement.
+
+## Default Completion Rule
+
+When the user asks to polish a repository and does not give a limiting instruction, complete the full polish path:
+
+- improve the top-level README experience
+- add or refine bilingual docs when they materially help
+- add missing public-facing files such as `LICENSE` and `.gitignore`
+- add or refine GitHub workflows for docs or CI when appropriate
+- update repository metadata such as description, homepage, and topics when auth is available
+- verify builds and key links locally when possible
+- commit in small recoverable steps
+- push when a remote is configured and push access is available
+
+Do not stop early just because one visible deliverable is done. Only stop short when:
+
+- the user explicitly asks for a smaller scope
+- a risky decision needs confirmation
+- a platform limitation blocks the final step
+
+If a platform limitation blocks the last mile, still complete everything else, document the blocker clearly, and leave the repository in the closest possible ready state.
 
 ## Common Scope
 
@@ -78,13 +100,30 @@ When shipping VitePress docs:
 
 If Actions cannot create the Pages site automatically, use `gh api` manually after confirming auth. See [references/github-pages-notes.md](./references/github-pages-notes.md).
 
+If the repository remains private and the current GitHub plan does not support Pages for that repo:
+
+- keep the Pages workflow committed
+- prevent noisy repeated failures when practical
+- document the limitation in the README or troubleshooting docs
+- leave the repo ready to publish once visibility or plan changes
+
 ### 6. Verify before finishing
 
 - run the docs build locally if docs were added
 - confirm links and repo URLs match the current repo name
 - confirm README assets use stable URLs
 - confirm GitHub workflow paths are correct
+- confirm repository metadata is set when auth is available
 - confirm the repo remains clean after commits and push
+
+### 7. Close out at the actual finish line
+
+Before declaring the task done, check whether the repository has reached the highest-value stopping point available in the current environment:
+
+- if a remote exists and credentials are available, push
+- if workflows were added, make sure they at least start correctly or are intentionally gated
+- if a publish step is blocked by plan or permissions, document that exact blocker and leave everything else ready
+- summarize what was completed and what exact final step still depends on the user or platform
 
 ## Commit Style
 
