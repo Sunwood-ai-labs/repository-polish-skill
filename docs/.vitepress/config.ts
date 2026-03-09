@@ -72,7 +72,7 @@ export default defineConfig({
       title: siteTitle,
       description: siteDescription,
       themeConfig: {
-        logo: "/favicon.svg",
+        logo: "/logo.svg",
         nav: [
           { text: "Home", link: "/" },
           { text: "Guide", link: "/guide/getting-started" },
@@ -100,7 +100,7 @@ export default defineConfig({
       description:
         "README、日英ドキュメント、GitHub Pages、公開向け構成まで含めてリポジトリを整えるための Codex skill。",
       themeConfig: {
-        logo: "/favicon.svg",
+        logo: "/logo.svg",
         nav: [
           { text: "ホーム", link: "/ja/" },
           { text: "ガイド", link: "/ja/guide/getting-started" },
