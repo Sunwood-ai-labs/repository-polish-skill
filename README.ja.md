@@ -1,11 +1,11 @@
 <div align="center">
   <h1>Repository Polish Skill</h1>
-  <img src="https://raw.githubusercontent.com/Sunwood-ai-labs/repository-polish-skill/main/docs/public/logo.svg" alt="Repository Polish Skill" width="220">
+  <img src="./docs/public/icon.webp" alt="Repository Polish Skill" width="280">
   <p>
-    <img src="https://img.shields.io/badge/Codex-Skill-F97316" alt="Codex Skill">
-    <img src="https://img.shields.io/badge/VitePress-Docs-646CFF?logo=vitepress&logoColor=white" alt="VitePress">
-    <img src="https://img.shields.io/badge/GitHub%20Pages-CI%2FCD-222222?logo=githubpages&logoColor=white" alt="GitHub Pages">
-    <img src="https://img.shields.io/badge/Bilingual-English%20%2B%20Japanese-0F766E" alt="Bilingual">
+    <img src="https://img.shields.io/badge/Codex-Skill-BF8B5E" alt="Codex Skill">
+    <img src="https://img.shields.io/badge/VitePress-Docs-D98673?logo=vitepress&logoColor=white" alt="VitePress">
+    <img src="https://img.shields.io/badge/GitHub%20Pages-CI%2FCD-733B2F?logo=githubpages&logoColor=white" alt="GitHub Pages">
+    <img src="https://img.shields.io/badge/Bilingual-English%20%2B%20Japanese-594246" alt="Bilingual">
   </p>
   <p>
     <a href="./README.md">

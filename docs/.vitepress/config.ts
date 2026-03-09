@@ -39,7 +39,7 @@ export default defineConfig({
   cleanUrls: true,
   head: [
     ["link", { rel: "icon", type: "image/svg+xml", href: `${siteBase}favicon.svg` }],
-    ["meta", { name: "theme-color", content: "#ef6c00" }],
+    ["meta", { name: "theme-color", content: "#733B2F" }],
   ],
   sitemap: {
     hostname: siteUrl,

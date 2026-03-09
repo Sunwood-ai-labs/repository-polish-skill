@@ -6,7 +6,7 @@ hero:
   text: "Turn working repos into polished public projects."
   tagline: "A Codex skill for README upgrades, bilingual docs, GitHub Pages, and release-ready repository structure."
   image:
-    src: /logo.svg
+    src: /icon.webp
     alt: Repository Polish Skill
   actions:
     - theme: brand
