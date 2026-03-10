@@ -10,6 +10,7 @@ This skill often produces:
 - `.github/workflows/ci.yml`
 - `.github/workflows/deploy-docs.yml`
 - `docs/public/favicon.svg`, `logo.svg`, or another reusable SVG identity asset when the repo lacks header art
+- flat, geometric SVG icon work that can scale from favicon to hero usage
 - repository homepage and topic recommendations
 - QA notes covering what was structurally checked in source, config, and build outputs
 

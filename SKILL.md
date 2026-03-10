@@ -51,6 +51,7 @@ If a platform limitation blocks the last mile, still complete everything else, d
 - Add GitHub Pages deployment with Actions when docs should be published
 - Update repo name, homepage, topics, and badges when the repository is meant to be public
 - If no header image exists, create a simple reusable SVG icon and use it across the README header image, hero image, and docs favicon or logo when appropriate
+- Prefer a flat, geometric icon style informed by Google Fonts icons at `https://fonts.google.com/icons`, especially the Material Symbols visual language, but do not copy existing brand marks or logos directly
 - Add small, coherent visual polish such as icons, header images, or section emoji
 - Prefix `README.md` and `README.ja.md` `##` section headings with fitting emoji so long as readability improves
 
@@ -80,6 +81,7 @@ Always verify the repository mechanically, even when no browser QA is needed:
 - docs build commands, output path, and current repo-name URL assumptions
 - docs information architecture, navigation labels, heading consistency, and locale parity
 - SVG icon assets exist and are wired correctly when the repo needed a new visual identity seed
+- generated SVG icons use a flat, clean, recognizably product-like style without imitating trademarked logos
 - Python helper commands prefer `uv run` when Python execution is needed
 - workflow paths, triggers, artifact directories, and Pages base configuration
 - metadata changes such as homepage, description, and topics when auth is available

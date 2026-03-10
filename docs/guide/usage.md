@@ -24,6 +24,7 @@ Ask Codex to use this skill with prompts like:
 - avoid creating docs structure that the project cannot maintain
 - keep English and Japanese docs aligned when both are requested
 - create a reusable SVG identity asset when the repo lacks header or hero art
+- keep generated SVG icons flat, geometric, and informed by Google Fonts icons and Material Symbols without copying existing logos
 - verify URLs, badges, workflow paths, Pages configuration, and source-level docs structure before pushing
 - verify README and docs structure, heading order, and locale parity before signoff
 - use emoji-prefixed `##` headings in README files when that improves readability

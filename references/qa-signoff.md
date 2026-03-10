@@ -24,6 +24,7 @@ Always verify the repository mechanically:
 - docs commands such as `docs:build` and the actual output directory
 - docs navigation, page naming, heading consistency, and locale-to-locale structural parity
 - generated SVG icon assets and their references are coherent across README, docs, and site metadata when those assets were added
+- generated SVG icons are flat, geometric, and informed by Google Fonts icons and Material Symbols without copying existing brand logos
 - Python execution examples and helper commands use `uv run` when Python is involved
 - Pages base URL and repo-name assumptions
 - workflow triggers, paths, and artifact upload directories
@@ -49,6 +50,7 @@ Treat these as failures:
 - mismatched language navigation after you claimed bilingual support
 - inconsistent titles, heading structure, or repo-name/base-path assumptions
 - claims about generated icons, header images, hero images, or favicons that are not supported by actual file references
+- generated SVG icons that look like direct copies of existing third-party logos
 
 If you additionally open a local preview, treat that as bonus evidence rather than the default requirement.
 

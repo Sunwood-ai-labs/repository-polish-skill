@@ -36,6 +36,8 @@ Use this checklist when polishing a repository.
 - if no header image exists, a simple reusable SVG icon is created
 - the same SVG identity can seed the README header image, hero image, docs favicon, or docs logo when appropriate
 - generated visual assets are consistent with the repository theme instead of looking unrelated or generic
+- generated SVG icons use a flat, geometric style informed by Google Fonts icons and Material Symbols
+- generated SVG icons do not directly copy existing company logos or trademarked marks
 
 ## Documentation
 

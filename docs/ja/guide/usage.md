@@ -24,6 +24,7 @@ Codex には次のように依頼できます。
 - 維持できない docs 構成を増やさない
 - 英語と日本語の docs をそろえる
 - header や hero 画像がない repo では、再利用できる SVG アイコンを作る
+- 生成する SVG アイコンは、`https://fonts.google.com/icons` の Google Fonts icons と Material Symbols の見た目を参考にしつつ、既存ロゴのコピーにはしない
 - push 前に URL、badge、workflow path、Pages 設定、source 上の docs 構造を確認する
 - signoff 前に README と docs の構成、見出し順、日英対応を確認する
 - README の `##` 見出しは、読みやすさが上がるなら絵文字付きにする
