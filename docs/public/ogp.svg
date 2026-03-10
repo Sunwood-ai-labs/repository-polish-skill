@@ -1,35 +1,36 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" rx="32" fill="#F8F9FA"/>
-  <circle cx="1030" cy="104" r="76" fill="#4285F4" fill-opacity="0.08"/>
-  <circle cx="1108" cy="232" r="54" fill="#EA4335" fill-opacity="0.08"/>
-  <circle cx="1028" cy="520" r="98" fill="#FBBC05" fill-opacity="0.12"/>
-  <circle cx="164" cy="514" r="110" fill="#34A853" fill-opacity="0.08"/>
-  <g transform="translate(90 84)">
-    <rect width="276" height="276" rx="64" fill="white" stroke="#E2E5EA" stroke-width="10"/>
-    <rect x="-10" y="12" width="156" height="26" rx="13" fill="#4285F4"/>
-    <rect x="240" y="64" width="26" height="134" rx="13" fill="#EA4335"/>
-    <rect x="92" y="248" width="156" height="26" rx="13" fill="#FBBC05"/>
-    <rect x="-18" y="116" width="26" height="112" rx="13" fill="#34A853"/>
-    <path d="M194 0H220C250.928 0 276 25.0721 276 56V82L194 0Z" fill="#E8EAED"/>
-    <rect x="54" y="92" width="110" height="14" rx="7" fill="#4285F4"/>
-    <rect x="54" y="124" width="144" height="12" rx="6" fill="#EA4335"/>
-    <rect x="54" y="150" width="126" height="12" rx="6" fill="#FBBC05"/>
-    <rect x="54" y="176" width="96" height="12" rx="6" fill="#34A853"/>
-    <circle cx="194" cy="198" r="28" fill="#4285F4"/>
-    <path d="M194 181L198.49 192.51L210 197L198.49 201.49L194 213L189.51 201.49L178 197L189.51 192.51L194 181Z" fill="white"/>
+  <rect width="1200" height="630" rx="36" fill="#F2EEEB"/>
+  <rect x="32" y="32" width="1136" height="566" rx="32" fill="url(#bg)"/>
+  <circle cx="1060" cy="118" r="84" fill="#F2EEEB" fill-opacity="0.1"/>
+  <circle cx="980" cy="532" r="118" fill="#F2EEEB" fill-opacity="0.08"/>
+  <circle cx="192" cy="500" r="132" fill="#BF8B5E" fill-opacity="0.1"/>
+  <g transform="translate(110 112)">
+    <rect width="208" height="208" rx="52" fill="#F2EEEB" fill-opacity="0.96"/>
+    <rect x="34" y="42" width="114" height="18" rx="9" fill="#D98673"/>
+    <rect x="34" y="78" width="148" height="12" rx="6" fill="#BF8B5E"/>
+    <rect x="34" y="104" width="126" height="12" rx="6" fill="#733B2F"/>
+    <rect x="34" y="130" width="98" height="12" rx="6" fill="#594246" fill-opacity="0.72"/>
+    <circle cx="174" cy="150" r="30" fill="#733B2F"/>
+    <path d="M174 128L179 142H194L182 150L187 164L174 156L161 164L166 150L154 142H169L174 128Z" fill="#F2EEEB"/>
   </g>
-  <text x="430" y="220" fill="#202124" font-family="'Segoe UI', Arial, sans-serif" font-size="66" font-weight="700">
+  <text x="380" y="236" fill="#F2EEEB" font-family="'Segoe UI', Arial, sans-serif" font-size="68" font-weight="700">
     Repository Polish Skill
   </text>
-  <text x="430" y="292" fill="#5F6368" font-family="'Segoe UI', Arial, sans-serif" font-size="31" font-weight="500">
-    README upgrades, bilingual docs, GitHub Pages, and end-to-end polish
+  <text x="380" y="308" fill="#F2EEEB" fill-opacity="0.9" font-family="'Segoe UI', Arial, sans-serif" font-size="30" font-weight="500">
+    README upgrades, bilingual docs, GitHub Pages, and release-ready repo polish
   </text>
-  <rect x="430" y="356" width="208" height="18" rx="9" fill="#4285F4"/>
-  <rect x="430" y="392" width="238" height="16" rx="8" fill="#EA4335"/>
-  <rect x="430" y="424" width="196" height="16" rx="8" fill="#FBBC05"/>
-  <rect x="430" y="456" width="168" height="16" rx="8" fill="#34A853"/>
-  <rect x="430" y="516" width="290" height="56" rx="28" fill="#202124"/>
-  <text x="463" y="552" fill="white" font-family="'Segoe UI', Arial, sans-serif" font-size="26" font-weight="600">
-    Finish the last mile cleanly
+  <text x="380" y="398" fill="#F2EEEB" fill-opacity="0.78" font-family="'Segoe UI', Arial, sans-serif" font-size="26">
+    Codex skill for turning useful repos into polished public projects
   </text>
+  <rect x="380" y="438" width="284" height="52" rx="26" fill="#F2EEEB" fill-opacity="0.12"/>
+  <text x="412" y="472" fill="#F2EEEB" font-family="'Segoe UI', Arial, sans-serif" font-size="24" font-weight="600">
+    Warm, editorial repo polish
+  </text>
+  <defs>
+    <linearGradient id="bg" x1="58" y1="44" x2="1116" y2="600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#594246"/>
+      <stop offset="0.52" stop-color="#733B2F"/>
+      <stop offset="1" stop-color="#D98673"/>
+    </linearGradient>
+  </defs>
 </svg>
