@@ -17,7 +17,7 @@
   </p>
 </div>
 
-Turn an existing repository into a cleaner, more public-facing project. This skill helps Codex improve README files, bilingual documentation, VitePress or GitHub Pages setup, CI, and release-facing structure without over-editing the repo.
+Turn an existing repository into a cleaner, more public-facing project. This skill helps Codex improve README files, bilingual documentation, VitePress or GitHub Pages setup, CI, release-facing structure, and final verification without over-editing the repo.
 
 ## Features
 
@@ -26,6 +26,7 @@ Turn an existing repository into a cleaner, more public-facing project. This ski
 - add or refine bilingual `docs/` with VitePress
 - set up CI and GitHub Pages deployment for docs
 - tighten public-facing details such as badges, homepage links, topics, and section structure
+- verify the result with structural QA and browser QA when a browsable surface changes
 
 ## Default Behavior
 
@@ -37,7 +38,7 @@ That usually means:
 - missing public-facing files such as `.gitignore` or `LICENSE`
 - docs workflows and Pages setup when relevant
 - repository metadata such as description, homepage, and topics
-- local verification
+- local verification, including browser QA for changed docs when possible
 - commit and push when access is available
 
 If the very last step is blocked by plan, permissions, or repo visibility, the skill should still finish everything else and document the blocker clearly instead of stopping early.
@@ -66,6 +67,7 @@ repository-polish-skill/
 |- references/
 |  |- bilingual-docs-pattern.md
 |  |- github-pages-notes.md
+|  |- qa-signoff.md
 |  `- repository-checklist.md
 |- scripts/
 |  `- collect_repo_state.ps1
@@ -102,7 +104,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 ## Documentation
 
 - English docs: [Project Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/)
-- Japanese docs: [日本語ドキュメント](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
+- Japanese docs: [Japanese Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
 - Local docs preview:
 
 ```bash
@@ -115,4 +117,5 @@ npm run docs:dev
 
 - The skill starts with the smallest coherent plan, but it should not stop early unless the user narrows the scope.
 - If GitHub Pages cannot be published because of plan or visibility limits, the skill should leave the repo in a ready-to-publish state and document the blocker.
+- When docs or another browsable surface change, use browser QA instead of relying on build success alone.
 - It is based on practical repository work, including the publishing flow used for `logged-in-google-chrome-skill`.

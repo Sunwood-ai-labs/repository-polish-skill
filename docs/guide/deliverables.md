@@ -10,6 +10,7 @@ This skill often produces:
 - `.github/workflows/ci.yml`
 - `.github/workflows/deploy-docs.yml`
 - repository homepage and topic recommendations
+- QA notes covering what was structurally checked and what was inspected in a browser
 
 ## README Improvements
 
@@ -27,6 +28,7 @@ When the user does not explicitly ask for a partial task, the expected finish li
 - verified docs builds when docs were added
 - checked workflow paths and Pages base
 - updated repo metadata when credentials are available
+- browser QA for changed docs or other browsable surfaces when local preview is possible
 - clean commit history in small recoverable steps
 - push to the configured remote when access is available
 

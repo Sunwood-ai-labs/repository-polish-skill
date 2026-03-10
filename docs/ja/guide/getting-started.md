@@ -1,8 +1,8 @@
 # はじめに
 
-## 🧭 この skill が扱うこと
+## この skill が扱うこと
 
-`repository-polish` は、必要以上に触りすぎずに、リポジトリの公開向け品質を上げることを目的にした skill です。
+`repository-polish` は、既存リポジトリの公開向け品質を、必要以上に壊さずに引き上げるための skill です。
 
 主な対象:
 
@@ -10,34 +10,36 @@
 - 必要に応じた `README.ja.md`
 - 複数ページ docs が有効なときの VitePress
 - GitHub Actions と GitHub Pages
-- 公開向けの導線や metadata の整理
+- 公開向けの metadata と導線整理
+- signoff 前の構造QAとブラウザQA
 
-## ⚙️ 最初の一歩
+## 最初の一歩
 
-編集前に状態確認スクリプトを実行します。
+変更前に inventory スクリプトを実行します。
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoPath D:\Prj\some-repo
 ```
 
-この出力をもとに、足りないものと触らないほうがいいものを見極めます。
+出力を見て、足りないものと触らない方がよいものを見分けます。
 
-## 🧱 基本方針
+## 基本原則
 
-依頼を満たす最小で一貫した改善セットを選ぶことが前提です。
+ユーザーの要求を満たす最小の整合ある改善セットを選びます。
 
-流れとしては:
+通常は次の流れになります。
 
 1. repo を理解する
-2. 最初に見える部分を整える
-3. docs は必要なときだけ足す
-4. docs があるときだけ公開導線をつなぐ
+2. 最初に見える体験を改善する
+3. docs が本当に有効なときだけ追加する
+4. signoff 前に主張を全部検証する
 
-## 📁 主な参照先
+## 主な参照先
 
-skill を使うときは、repo 内の次のファイルを参照します。
+skill 使用中は次のファイルを参照します。
 
 - `SKILL.md`
 - `references/repository-checklist.md`
+- `references/qa-signoff.md`
 - `references/bilingual-docs-pattern.md`
 - `references/github-pages-notes.md`

@@ -1,6 +1,6 @@
 ---
 name: repository-polish
-description: Polish and productize a repository by improving its README, bilingual documentation, GitHub Pages or VitePress docs, CI/CD, repository metadata, and public-facing structure. Use when Codex is asked to clean up a repo, prepare it for release, add docs, add Pages deployment, improve GitHub presentation, or turn an internal project into a reusable public repository.
+description: Polish and productize a repository by improving its README, bilingual documentation, GitHub Pages or VitePress docs, CI/CD, repository metadata, and public-facing structure. Use when Codex is asked to clean up a repo, prepare it for release, add docs, add Pages deployment, improve GitHub presentation, or turn an internal project into a reusable public repository. Also use it when the repo work must be carried through verification, browser QA, commit, and push instead of stopping after the first visible deliverable.
 ---
 
 # Repository Polish
@@ -11,9 +11,14 @@ Turn an existing repository into a clean, public-facing, documented project.
 
 1. Run [scripts/collect_repo_state.ps1](./scripts/collect_repo_state.ps1) against the target repository.
 2. Inspect the current README, docs, workflows, and repo metadata before editing anything.
-3. Unless the user explicitly asks for a narrow partial update, treat "polish this repo" as a request to carry the repository through a complete public-facing finish.
-4. Verify each user-facing addition locally when possible before pushing.
-5. Finish the job end-to-end instead of stopping after the first visible improvement.
+3. Write a QA inventory before editing:
+   - the user's requested deliverables
+   - every user-facing artifact you expect to change
+   - every claim you expect to make in the final response
+4. Unless the user explicitly asks for a narrow partial update, treat "polish this repo" as a request to carry the repository through a complete public-facing finish.
+5. Use `$playwright-interactive` for browser QA when you add or change a browsable surface such as VitePress docs, a docs landing page, or another local previewable UI and `js_repl` is available.
+6. Verify each user-facing addition locally when possible before pushing.
+7. Finish the job end-to-end instead of stopping after the first visible improvement.
 
 ## Default Completion Rule
 
@@ -24,7 +29,8 @@ When the user asks to polish a repository and does not give a limiting instructi
 - add missing public-facing files such as `LICENSE` and `.gitignore`
 - add or refine GitHub workflows for docs or CI when appropriate
 - update repository metadata such as description, homepage, and topics when auth is available
-- verify builds and key links locally when possible
+- run structural QA for each changed deliverable
+- run browser QA for changed browsable surfaces when local preview is possible
 - commit in small recoverable steps
 - push when a remote is configured and push access is available
 
@@ -44,6 +50,44 @@ If a platform limitation blocks the last mile, still complete everything else, d
 - Add GitHub Pages deployment with Actions when docs should be published
 - Update repo name, homepage, topics, and badges when the repository is meant to be public
 - Add small, coherent visual polish such as icons, header images, or section emoji
+
+## QA Workflow
+
+Use [references/qa-signoff.md](./references/qa-signoff.md) as the detailed signoff guide.
+
+### 1. Build the QA inventory
+
+Before making or validating edits, list:
+
+- the user's stated requirements
+- every artifact you changed or created
+- every user-visible claim you plan to make in the final response
+- for browsable docs or sites, the key pages, controls, states, and language variants that need inspection
+
+Nothing in the final response should lack a matching check.
+
+### 2. Structural QA for every polish task
+
+Always verify the repository mechanically, even when no browser QA is needed:
+
+- README links, badges, filenames, and quick-start commands
+- docs build commands, output path, and current repo-name URL assumptions
+- workflow paths, triggers, artifact directories, and Pages base configuration
+- metadata changes such as homepage, description, and topics when auth is available
+- git status after commits and push attempts
+
+### 3. Browser QA for changed browsable surfaces
+
+When you changed VitePress docs, a docs landing page, or another local previewable surface:
+
+- use `$playwright-interactive` if `js_repl` is available
+- preview the changed surface locally
+- test the primary navigation and one end-to-end reader flow with normal user input
+- inspect the landing page and at least one meaningful subpage per locale you touched
+- inspect a smaller realistic viewport in addition to the default desktop viewport
+- treat visual polish, clipping, broken layout, weak contrast, and obvious copy errors as QA failures
+
+Do not claim that browsable docs are polished, visually coherent, or ready to publish unless you actually inspected them in a browser. If Playwright or preview is blocked, still finish structural QA and call out the exact QA limitation.
 
 ## Workflow
 
@@ -109,12 +153,14 @@ If the repository remains private and the current GitHub plan does not support P
 
 ### 6. Verify before finishing
 
+- review the QA inventory and make sure every planned claim has evidence
 - run the docs build locally if docs were added
 - confirm links and repo URLs match the current repo name
 - confirm README assets use stable URLs
 - confirm GitHub workflow paths are correct
 - confirm repository metadata is set when auth is available
-- confirm the repo remains clean after commits and push
+- run browser QA for changed browsable surfaces when local preview is possible
+- confirm the repo remains clean after commits and push attempts
 
 ### 7. Close out at the actual finish line
 
@@ -123,7 +169,7 @@ Before declaring the task done, check whether the repository has reached the hig
 - if a remote exists and credentials are available, push
 - if workflows were added, make sure they at least start correctly or are intentionally gated
 - if a publish step is blocked by plan or permissions, document that exact blocker and leave everything else ready
-- summarize what was completed and what exact final step still depends on the user or platform
+- summarize what was completed, what evidence was checked, and what exact final step still depends on the user or platform
 
 ## Commit Style
 
@@ -137,5 +183,6 @@ When committing repository polish work:
 ## References
 
 - Use [references/repository-checklist.md](./references/repository-checklist.md) for a practical polish checklist.
+- Use [references/qa-signoff.md](./references/qa-signoff.md) for structural QA and browser QA expectations.
 - Use [references/bilingual-docs-pattern.md](./references/bilingual-docs-pattern.md) when adding English and Japanese docs.
 - Use [references/github-pages-notes.md](./references/github-pages-notes.md) when wiring GitHub Pages deployment.

@@ -17,42 +17,43 @@
   </p>
 </div>
 
-既存のリポジトリを、より公開向けで整った状態へ仕上げるための Codex skill です。README、日英ドキュメント、VitePress / GitHub Pages、CI、公開時の見た目や導線を、必要以上に過剰編集せず整えます。
+既存のリポジトリを、公開しやすく読みやすい状態まで仕上げるための Codex skill です。README、日英ドキュメント、VitePress / GitHub Pages、CI、公開向けの見た目や導線を整えつつ、最後は検証までやり切る前提で使います。
 
 ## できること
 
-- 変更前にリポジトリの状態を棚卸しする
+- リポジトリの現状を監査する
 - `README.md` と `README.ja.md` を改善または新規作成する
 - VitePress ベースの `docs/` を追加または整理する
-- docs 用の CI や GitHub Pages workflow を整える
-- badge、homepage、topics、導線など公開向けの見た目を整える
+- docs 向けの CI と GitHub Pages workflow を整備する
+- badge、homepage、topics など公開向けの細部を整える
+- 変更内容を構造QAとブラウザQAで確認する
 
-## デフォルトの振る舞い
+## デフォルトの挙動
 
-ユーザーから明示的に「README だけ」などの限定がない限り、この skill はその環境で到達できる最高価値の完了状態まで持っていく前提で動きます。
+ユーザーが明示的に範囲を狭めない限り、この skill は最初の成果物だけで止まらず、到達可能な最高価値の完了状態まで進めます。
 
-たとえば次のようなところまで進めます。
+通常は次のような作業を含みます。
 
-- README と docs の整備
-- `.gitignore` や `LICENSE` など公開向けファイルの補完
-- 必要に応じた docs workflow や Pages 設定
+- README と docs の改善
+- `.gitignore` や `LICENSE` などの公開向けファイル整備
+- docs workflow と Pages 設定
 - description、homepage、topics など repo metadata の更新
 - ローカル検証
 - commit と push
 
-最後の一歩だけがプラン制約、権限、repo visibility などで止まる場合でも、そこで作業全体を止めず、残りは完了させたうえで blocker を明記します。
+最後の一歩がプラン制限、権限、visibility などで塞がれていても、そこ以外は完了させたうえで blocker を明記します。
 
-## この skill がある理由
+## この skill の目的
 
-コード自体は良くても、公開時には次のような理由で「未完成」に見える repo が多くあります。
+コードは良くても、共有した瞬間に「まだ内向きの repo に見える」状態はよくあります。
 
 - README が薄い
 - 日本語版がない
-- 閲覧しやすい docs がない
-- GitHub Pages 配信がない
-- 初見ユーザー向けの導線が弱い
+- docs がない
+- GitHub Pages で見られない
+- 初見の導線が弱い
 
-この skill は、そうした穴を埋めるための再利用可能な整備フローをまとめたものです。
+この skill は、そうしたギャップを埋めるための再利用可能な仕上げフローをまとめたものです。
 
 ## リポジトリ構成
 
@@ -66,6 +67,7 @@ repository-polish-skill/
 |- references/
 |  |- bilingual-docs-pattern.md
 |  |- github-pages-notes.md
+|  |- qa-signoff.md
 |  `- repository-checklist.md
 |- scripts/
 |  `- collect_repo_state.ps1
@@ -78,31 +80,31 @@ repository-polish-skill/
 
 ## クイックスタート
 
-### 1. 対象 repo を棚卸しする
+### 1. 対象リポジトリを確認する
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoPath D:\Prj\some-repo
 ```
 
-### 2. Codex で skill を使う
+### 2. Codex から skill を使う
 
 - `Use $repository-polish to clean up this repo and add a stronger README.`
 - `Use $repository-polish to add bilingual docs and GitHub Pages deployment.`
 - `Use $repository-polish to make this repository feel ready for public release.`
 
-## 改善できる対象
+## 改善対象の例
 
-- README 構成と quick start の分かりやすさ
+- README の構成と quick start の分かりやすさ
 - 英語と日本語のドキュメント整合
-- VitePress docs の土台
+- VitePress docs の導入
 - CI / GitHub Pages workflow
-- repo 名、リンク、badge、導線の polish
-- 検証、commit、push まで含む完走
+- repo 名、リンク、badge、公開向け polish
+- 検証、commit、push まで含めた仕上げ
 
 ## ドキュメント
 
 - English docs: [Project Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/)
-- 日本語 docs: [日本語ドキュメント](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
+- 日本語 docs: [Japanese Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
 - ローカル preview:
 
 ```bash
@@ -111,8 +113,9 @@ npm install
 npm run docs:dev
 ```
 
-## 補足
+## メモ
 
-- 最初は最小限の整備計画から始めますが、ユーザーが範囲を狭めていない限り途中では止まりません。
-- GitHub Pages がプランや visibility 制約で公開できない場合でも、公開可能な直前状態まで整えて blocker を記録します。
-- `logged-in-google-chrome-skill` など、実際の repo 整備フローで得た知見をもとにしています。
+- 最小の整合あるプランから始めますが、ユーザーが止めない限り途中では終わりません。
+- GitHub Pages がプランや visibility の都合で公開できない場合でも、公開可能な直前状態までは整えます。
+- docs などブラウザで見る成果物を変更したときは、build 成功だけで済ませずブラウザQAも行います。
+- `logged-in-google-chrome-skill` など、実際の公開向け repo 整備フローをもとに育てています。

@@ -8,6 +8,13 @@ Use this checklist when polishing a repository.
 - do not stop at README edits if docs, workflows, metadata, verification, or push are still unfinished
 - if the very last mile is blocked by plan, permissions, or repo visibility, finish everything else and document the blocker clearly
 
+## QA inventory
+
+- list the user's requested deliverables
+- list every file, page, workflow, and metadata field you changed
+- list every claim you expect to make in the final response
+- for browsable surfaces, list the pages, locales, and navigation states you need to inspect
+
 ## Core files
 
 - `README.md`
@@ -45,4 +52,6 @@ Use this checklist when polishing a repository.
 - README images use stable raw URLs or hosted assets
 - repository metadata is updated when credentials are available
 - workflows either run successfully or are intentionally gated with the limitation documented
+- browser QA is completed for changed browsable surfaces when local preview is possible
+- final claims only mention checks that were actually performed
 - git status is clean after commit and push
