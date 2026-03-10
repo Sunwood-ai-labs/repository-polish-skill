@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Repository Polish Skill</h1>
-  <img src="./docs/public/icon.webp" alt="Repository Polish Skill" width="280">
+  <img src="./docs/public/icon.svg" alt="Repository Polish Skill" width="280">
   <p>
     <img src="https://img.shields.io/badge/Codex-Skill-BF8B5E" alt="Codex Skill">
     <img src="https://img.shields.io/badge/VitePress-Docs-D98673?logo=vitepress&logoColor=white" alt="VitePress">

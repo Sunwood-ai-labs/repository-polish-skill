@@ -6,7 +6,7 @@ hero:
   text: "既存 repo を公開向けに整った repo へ。"
   tagline: "README、日英 docs、GitHub Pages、そして最後の仕上げまで通すための Codex skill です。"
   image:
-    src: /icon.webp
+    src: /icon.svg
     alt: Repository Polish Skill
   actions:
     - theme: brand
