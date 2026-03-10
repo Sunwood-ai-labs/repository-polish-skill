@@ -19,16 +19,18 @@
 
 Turn an existing repository into a cleaner, more public-facing project. This skill helps Codex improve README files, bilingual documentation, VitePress or GitHub Pages setup, CI, release-facing structure, and final verification without over-editing the repo.
 
-## Features
+## ✨ Features
 
 - audit repository state before making changes
 - improve or create `README.md` and `README.ja.md`
 - add or refine bilingual `docs/` with VitePress
 - set up CI and GitHub Pages deployment for docs
 - tighten public-facing details such as badges, homepage links, topics, and section structure
-- verify the result with structural QA and browser QA when a browsable surface changes
+- verify the result with structural QA and codebase signoff when user-facing surfaces change
+- check that README and docs structure stay readable, parallel, and easy to scan
+- prefer `uv run` for Python execution when Python helpers are involved
 
-## Default Behavior
+## 🎯 Default Behavior
 
 Unless the user explicitly asks for a narrow partial task, this skill should carry the repository through the highest-value finished state available in the environment.
 
@@ -38,12 +40,12 @@ That usually means:
 - missing public-facing files such as `.gitignore` or `LICENSE`
 - docs workflows and Pages setup when relevant
 - repository metadata such as description, homepage, and topics
-- local verification, including browser QA for changed docs when possible
+- local verification, centered on source, config, and build-output signoff
 - commit and push when access is available
 
 If the very last step is blocked by plan, permissions, or repo visibility, the skill should still finish everything else and document the blocker clearly instead of stopping early.
 
-## Why This Skill Exists
+## 🧭 Why This Skill Exists
 
 Many repositories already contain useful code, but still feel unfinished when shared publicly. Common gaps include:
 
@@ -55,7 +57,7 @@ Many repositories already contain useful code, but still feel unfinished when sh
 
 This skill packages a repeatable cleanup flow for those gaps.
 
-## Repository Layout
+## 🗂️ Repository Layout
 
 ```text
 repository-polish-skill/
@@ -78,7 +80,7 @@ repository-polish-skill/
    `- public/
 ```
 
-## Quick Start
+## 🚀 Quick Start
 
 ### 1. Inspect the target repository
 
@@ -92,7 +94,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 - `Use $repository-polish to add bilingual docs and GitHub Pages deployment.`
 - `Use $repository-polish to make this repository feel ready for public release.`
 
-## What It Can Improve
+## 🛠️ What It Can Improve
 
 - README structure and quick-start clarity
 - English and Japanese documentation alignment
@@ -101,7 +103,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 - repo naming, links, badges, and landing-page polish
 - end-to-end completion through verification, commit, and push
 
-## Documentation
+## 📚 Documentation
 
 - English docs: [Project Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/)
 - Japanese docs: [Japanese Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
@@ -113,9 +115,9 @@ npm install
 npm run docs:dev
 ```
 
-## Notes
+## 📝 Notes
 
 - The skill starts with the smallest coherent plan, but it should not stop early unless the user narrows the scope.
 - If GitHub Pages cannot be published because of plan or visibility limits, the skill should leave the repo in a ready-to-publish state and document the blocker.
-- When docs or another browsable surface change, use browser QA instead of relying on build success alone.
+- When docs or another user-facing surface change, verify the structure in source, config, and build outputs instead of relying on build success alone.
 - It is based on practical repository work, including the publishing flow used for `logged-in-google-chrome-skill`.

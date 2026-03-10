@@ -11,7 +11,8 @@ Typical scope:
 - VitePress docs when multi-page documentation is helpful
 - GitHub Pages deployment with Actions
 - cleaner repo metadata and navigation
-- structural QA and browser QA before signoff
+- structural QA and codebase signoff before signoff
+- `uv run` for Python helpers when Python is needed
 
 ## First Step
 

@@ -9,8 +9,9 @@ This skill often produces:
 - `docs/` with VitePress pages
 - `.github/workflows/ci.yml`
 - `.github/workflows/deploy-docs.yml`
+- `docs/public/favicon.svg`, `logo.svg`, or another reusable SVG identity asset when the repo lacks header art
 - repository homepage and topic recommendations
-- QA notes covering what was structurally checked and what was inspected in a browser
+- QA notes covering what was structurally checked in source, config, and build outputs
 
 ## README Improvements
 
@@ -18,6 +19,7 @@ README work may include:
 
 - stronger title and intro
 - badges and language switches
+- emoji-prefixed `##` headings when they improve scanability
 - clearer quick start and repo layout
 - links to hosted docs
 
@@ -28,7 +30,7 @@ When the user does not explicitly ask for a partial task, the expected finish li
 - verified docs builds when docs were added
 - checked workflow paths and Pages base
 - updated repo metadata when credentials are available
-- browser QA for changed docs or other browsable surfaces when local preview is possible
+- codebase QA for changed docs and other user-facing surfaces
 - clean commit history in small recoverable steps
 - push to the configured remote when access is available
 
