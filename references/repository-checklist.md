@@ -28,6 +28,9 @@ Use this checklist when polishing a repository.
 - section order is coherent for a first-time reader
 - quick start appears before deep detail when onboarding matters
 - headings are short, parallel, and easy to scan
+- if a visual hero is used, the title is part of that hero instead of sitting awkwardly above it
+- tech/status badges and language-switch controls are separated into distinct rows when both exist
+- bilingual README variants expose an obvious language switch near the top
 - `##` headings use fitting emoji when decorative section styling is part of the polish pass
 - badges and language switches are present only when they help rather than clutter
 

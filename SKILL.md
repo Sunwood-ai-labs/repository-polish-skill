@@ -53,6 +53,9 @@ If a platform limitation blocks the last mile, still complete everything else, d
 - If no header image exists, create a simple reusable SVG icon and use it across the README header image, hero image, and docs favicon or logo when appropriate
 - Prefer a flat, geometric icon style informed by Google Fonts icons at `https://fonts.google.com/icons`, especially the Material Symbols visual language, but do not copy existing brand marks or logos directly
 - Add small, coherent visual polish such as icons, header images, or section emoji
+- When a README uses a centered hero block, keep the title inside that hero block instead of leaving a plain Markdown `# Title` stranded above it
+- Keep technology, status, and release badges on their own row and keep language-switch links or badges on a separate row
+- When bilingual README support is present, add an explicit language switch near the top of the README and make it visually distinct from tech badges
 - Prefix `README.md` and `README.ja.md` `##` section headings with fitting emoji so long as readability improves
 
 ## QA Workflow
@@ -78,6 +81,8 @@ Always verify the repository mechanically, even when no browser QA is needed:
 - README section order, heading clarity, and scannable formatting
 - README `##` headings use consistent helpful emoji when the repo uses decorative section styling
 - README language switch, summary block, and repo layout when those elements are relevant
+- README hero composition keeps title, logo, summary, badge rows, and language switch in a coherent top section when those elements exist
+- README badge rows do not mix language-switch controls with tech, CI, or license badges
 - docs build commands, output path, and current repo-name URL assumptions
 - docs information architecture, navigation labels, heading consistency, and locale parity
 - SVG icon assets exist and are wired correctly when the repo needed a new visual identity seed
