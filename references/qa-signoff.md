@@ -7,6 +7,7 @@ Use this guide when repository-polish work needs a real finish line instead of a
 Capture these before signoff:
 
 - the user's requested outcomes
+- the chosen polish mode (`完全整備`, `最適整備`, or default full polish)
 - every file, page, workflow, or metadata field you changed
 - every claim you plan to make in the final response
 - for docs or other user-facing surfaces, the pages, navigation paths, headings, and locales that need inspection
@@ -28,6 +29,7 @@ Always verify the repository mechanically:
 - Python execution examples and helper commands use `uv run` when Python is involved
 - Pages base URL and repo-name assumptions
 - workflow triggers, paths, and artifact upload directories
+- Pages site enablement when docs deployment is part of the claimed finish line
 - metadata updates when credentials are available
 - git status after commit and push work
 
@@ -59,6 +61,7 @@ If you additionally open a local preview, treat that as bonus evidence rather th
 You are ready to close out only when:
 
 - each final claim maps to a concrete check
+- the finish line matches the requested mode, especially when `完全整備` forbids a silent downscope
 - the highest-value remaining step is either completed or blocked by a clear external limitation
 - the final response names the blocker if one remains
 - the response does not imply visual or browser QA that you did not actually perform

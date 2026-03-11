@@ -17,46 +17,55 @@
   </p>
 </div>
 
-既存のリポジトリを、公開しやすく読みやすい状態まで仕上げるための Codex skill です。README、日英ドキュメント、VitePress / GitHub Pages、CI、公開向けの見た目や導線を整えつつ、最後は検証までやり切る前提で使います。
+既存リポジトリを、共有しやすく公開品質の高い状態まで整えるための Codex skill です。README、日英ドキュメント、VitePress / GitHub Pages、CI、公開向けメタデータ、最終検証までを扱いつつ、要求された整備の深さに合わせて仕上げます。
 
-## ✨ できること
+## 整備モード
 
-- リポジトリの現状を監査する
+- `完全整備`: docs、公開設定、metadata、remote 作成、push、workflow 修復まで含めて、意味のある finish line まで全部やる
+- `最適整備`: まず repo の中身を見て、その repo に合う最小の高価値セットを選ぶ
+- mode 指定なし: ユーザーが狭めない限り、これまで通り full polish を既定にする
+
+## できること
+
+- 変更前に repository state を監査する
 - `README.md` と `README.ja.md` を改善または新規作成する
-- VitePress ベースの `docs/` を追加または整理する
-- docs 向けの CI と GitHub Pages workflow を整備する
-- badge、homepage、topics など公開向けの細部を整える
-- 変更内容を構造QAとコードベース signoff で確認する
-- README と docs の構成や見出し順が読みやすいかも確認する
+- 日英対応の `docs/` を VitePress で追加または整備する
+- docs 向けの CI と GitHub Pages を設定する
+- badge、homepage、topics、セクション構成などの公開向け品質を整える
+- user-facing surface を変えたときに structural QA と codebase signoff を行う
+- README と docs の構造が読みやすく、対応関係が分かる状態を保つ
+- Python が関わるときは raw の `python` ではなく `uv run` を優先する
 
-## 🎯 デフォルトの挙動
+## 既定動作
 
-ユーザーが明示的に範囲を狭めない限り、この skill は最初の成果物だけで止まらず、到達可能な最高価値の完了状態まで進めます。
+ユーザーが明示的に狭い partial task を指定しない限り、この skill は環境内で到達可能な最高価値の finish line まで持っていく前提で動きます。
 
-通常は次のような作業を含みます。
+通常は次を含みます。
 
 - README と docs の改善
-- `.gitignore` や `LICENSE` などの公開向けファイル整備
-- docs workflow と Pages 設定
-- description、homepage、topics など repo metadata の更新
-- ローカル検証
-- commit と push
+- `.gitignore` や `LICENSE` など公開向け基礎ファイルの補完
+- 必要に応じた docs workflow と Pages 設定
+- description、homepage、topics などの metadata 更新
+- source、config、build output を中心にしたローカル検証
+- 実行可能なら commit と push
 
-最後の一歩がプラン制限、権限、visibility などで塞がれていても、そこ以外は完了させたうえで blocker を明記します。
+最後の一歩だけが plan、権限、visibility などで塞がれているなら、そこ以外は全部終わらせて blocker を明記します。
 
-## 🧭 この skill の目的
+`完全整備` と明示されたときは、repo が小さい、すでにそこそこ見える、といった理由で勝手に downscope しません。
 
-コードは良くても、共有した瞬間に「まだ内向きの repo に見える」状態はよくあります。
+## この skill の意図
+
+中身は良いのに、公開すると未完成に見える repo は多くあります。よくある不足は次のとおりです。
 
 - README が薄い
-- 日本語版がない
-- docs がない
-- GitHub Pages で見られない
-- 初見の導線が弱い
+- 日本語 counterpart がない
+- browsable docs がない
+- GitHub Pages がない
+- 初見ユーザー向けの入口が弱い
 
-この skill は、そうしたギャップを埋めるための再利用可能な仕上げフローをまとめたものです。
+この skill は、それらを再現性のある流れで整えるためのものです。
 
-## 🗂️ リポジトリ構成
+## リポジトリ構成
 
 ```text
 repository-polish-skill/
@@ -79,9 +88,9 @@ repository-polish-skill/
    `- public/
 ```
 
-## 🚀 クイックスタート
+## クイックスタート
 
-### 1. 対象リポジトリを確認する
+### 1. 対象 repo を調べる
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoPath D:\Prj\some-repo
@@ -92,17 +101,19 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 - `Use $repository-polish to clean up this repo and add a stronger README.`
 - `Use $repository-polish to add bilingual docs and GitHub Pages deployment.`
 - `Use $repository-polish to make this repository feel ready for public release.`
+- `Use $repository-polish to 完全整備 this repository.`
+- `Use $repository-polish to 最適整備 this repository.`
 
-## 🛠️ 改善対象の例
+## 改善できる対象
 
-- README の構成と quick start の分かりやすさ
-- 英語と日本語のドキュメント整合
-- VitePress docs の導入
+- README の構造と quick start の明確化
+- 英語と日本語の documentation alignment
+- VitePress docs の整備
 - CI / GitHub Pages workflow
-- repo 名、リンク、badge、公開向け polish
-- 検証、commit、push まで含めた仕上げ
+- repo 名、リンク、badge、landing-page polish
+- 検証、commit、push まで含めた end-to-end completion
 
-## 📚 ドキュメント
+## ドキュメント
 
 - English docs: [Project Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/)
 - 日本語 docs: [Japanese Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
@@ -114,9 +125,10 @@ npm install
 npm run docs:dev
 ```
 
-## 📝 メモ
+## メモ
 
-- 最小の整合あるプランから始めますが、ユーザーが止めない限り途中では終わりません。
-- GitHub Pages がプランや visibility の都合で公開できない場合でも、公開可能な直前状態までは整えます。
-- docs などの成果物を変更したときは、build 成功だけで済ませず source、config、build 出力まで確認します。
-- `logged-in-google-chrome-skill` など、実際の公開向け repo 整備フローをもとに育てています。
+- `完全整備` は「意味のあるところまで全部やる」、`最適整備` は「repo に合う形へ right-size する」という意味です
+- GitHub Pages が plan や visibility の都合で公開できないなら、公開直前の ready state まで整えて blocker を残します
+- Pages deploy が「Pages site がない」で落ちたら、まず workflow 側 enablement を使い、それでも足りなければ `gh api repos/OWNER/REPO/pages -X POST -f build_type=workflow` を使います
+- docs など user-facing surface を変えたときは、build 成功だけで終わらせず source / config / build output を見て検証します
+- 実運用で得た失敗や改善点を反映し続ける前提の skill です

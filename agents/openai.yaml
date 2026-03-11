@@ -1,4 +1,4 @@
 interface:
   display_name: "Repository Polish"
-  short_description: "Polish a repo through docs, Pages, release prep, and QA"
-  default_prompt: "Use $repository-polish to improve a repository's README, docs, GitHub Pages setup, public-facing structure, and final QA."
+  short_description: "Polish a repo in full or right-sized mode through docs, Pages, release prep, and QA"
+  default_prompt: "Use $repository-polish to completely polish a repository end-to-end, or ask for 最適整備 when you want a right-sized polish pass based on the repo's actual needs."

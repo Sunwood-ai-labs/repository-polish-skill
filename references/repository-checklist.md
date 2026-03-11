@@ -8,6 +8,12 @@ Use this checklist when polishing a repository.
 - do not stop at README edits if docs, workflows, metadata, verification, or push are still unfinished
 - if the very last mile is blocked by plan, permissions, or repo visibility, finish everything else and document the blocker clearly
 
+## Mode selection
+
+- if the user says `完全整備`, do the full polish path and do not silently downscope because the repo looks simple
+- if the user says `最適整備`, choose the smallest coherent set of improvements that best fits the repo
+- if the user does not name a mode, keep the default full-polish behavior unless the user narrows scope another way
+
 ## QA inventory
 
 - list the user's requested deliverables
@@ -53,6 +59,7 @@ Use this checklist when polishing a repository.
 - guide pages are not orphaned from nav or landing-page links
 - links, assets, and base paths are coherent in source and build configuration
 - favicon, logo, or social image references point to the intended generated assets when those assets were added
+- in `完全整備`, docs and publishing are not skipped just because the README already looks decent when the repo still benefits from a browsable docs surface
 
 ## GitHub repo polish
 
@@ -63,6 +70,7 @@ Use this checklist when polishing a repository.
 - relevant topics are set
 - README badges match the project
 - social preview assets exist when the repo is meant to be shared publicly
+- if `完全整備` needs a new remote repository and auth is available, remote creation and first push are treated as in-scope finish-line work
 
 ## CI/CD
 
@@ -70,6 +78,7 @@ Use this checklist when polishing a repository.
 - Pages deploys from a built artifact instead of the source tree
 - workflow uses the correct repo-specific base URL
 - Python helper commands use `uv run` when Python execution is part of the polish flow
+- Pages enablement is handled so deploy workflows do not fail just because the Pages site did not exist yet
 
 ## Final verification
 

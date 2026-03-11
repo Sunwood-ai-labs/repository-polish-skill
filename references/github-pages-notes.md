@@ -5,16 +5,30 @@
 Use a workflow that:
 
 1. checks out the repo
-2. installs Node dependencies in `docs/`
-3. builds the VitePress site
-4. uploads `docs/.vitepress/dist`
-5. deploys to GitHub Pages
+2. configures GitHub Pages
+3. installs Node dependencies in `docs/`
+4. builds the VitePress site
+5. uploads `docs/.vitepress/dist`
+6. deploys to GitHub Pages
+
+Prefer:
+
+```yaml
+- name: Configure GitHub Pages
+  uses: actions/configure-pages@v5
+  with:
+    enablement: true
+```
+
+That lets the workflow create the Pages site automatically when possible instead of failing on the first deploy.
 
 ## Common issues
 
 ### Pages site does not exist yet
 
 `actions/configure-pages` can fail if the repository has no Pages site configured.
+
+First, prefer enabling workflow-based creation in the workflow itself with `enablement: true`.
 
 If workflow-based enablement is blocked, create the Pages site manually:
 

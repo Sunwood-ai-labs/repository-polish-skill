@@ -17,9 +17,15 @@
   </p>
 </div>
 
-Turn an existing repository into a cleaner, more public-facing project. This skill helps Codex improve README files, bilingual documentation, VitePress or GitHub Pages setup, CI, release-facing structure, and final verification without over-editing the repo.
+Turn an existing repository into a cleaner, more public-facing project. This skill helps Codex improve README files, bilingual documentation, VitePress or GitHub Pages setup, CI, release-facing structure, and final verification while matching the requested polish depth.
 
-## ✨ Features
+## Modes
+
+- `完全整備`: do the whole job end-to-end, including docs, publishing, metadata, remote creation, push, and workflow repair when those steps are part of the natural finish line and auth is available
+- `最適整備`: inspect the repository first and choose the smallest coherent, high-value set of improvements that suits the actual project
+- no explicit mode: keep the existing default full-polish behavior unless the user narrows scope another way
+
+## Features
 
 - audit repository state before making changes
 - improve or create `README.md` and `README.ja.md`
@@ -30,7 +36,7 @@ Turn an existing repository into a cleaner, more public-facing project. This ski
 - check that README and docs structure stay readable, parallel, and easy to scan
 - prefer `uv run` for Python execution when Python helpers are involved
 
-## 🎯 Default Behavior
+## Default Behavior
 
 Unless the user explicitly asks for a narrow partial task, this skill should carry the repository through the highest-value finished state available in the environment.
 
@@ -45,7 +51,9 @@ That usually means:
 
 If the very last step is blocked by plan, permissions, or repo visibility, the skill should still finish everything else and document the blocker clearly instead of stopping early.
 
-## 🧭 Why This Skill Exists
+When the user explicitly says `完全整備`, the skill should not silently downscope just because the repository looks small or already decent.
+
+## Why This Skill Exists
 
 Many repositories already contain useful code, but still feel unfinished when shared publicly. Common gaps include:
 
@@ -57,7 +65,7 @@ Many repositories already contain useful code, but still feel unfinished when sh
 
 This skill packages a repeatable cleanup flow for those gaps.
 
-## 🗂️ Repository Layout
+## Repository Layout
 
 ```text
 repository-polish-skill/
@@ -80,7 +88,7 @@ repository-polish-skill/
    `- public/
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Inspect the target repository
 
@@ -93,8 +101,10 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 - `Use $repository-polish to clean up this repo and add a stronger README.`
 - `Use $repository-polish to add bilingual docs and GitHub Pages deployment.`
 - `Use $repository-polish to make this repository feel ready for public release.`
+- `Use $repository-polish to 完全整備 this repository.`
+- `Use $repository-polish to 最適整備 this repository.`
 
-## 🛠️ What It Can Improve
+## What It Can Improve
 
 - README structure and quick-start clarity
 - English and Japanese documentation alignment
@@ -103,7 +113,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 - repo naming, links, badges, and landing-page polish
 - end-to-end completion through verification, commit, and push
 
-## 📚 Documentation
+## Documentation
 
 - English docs: [Project Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/)
 - Japanese docs: [Japanese Docs](https://sunwood-ai-labs.github.io/repository-polish-skill/ja/)
@@ -115,9 +125,10 @@ npm install
 npm run docs:dev
 ```
 
-## 📝 Notes
+## Notes
 
-- The skill starts with the smallest coherent plan, but it should not stop early unless the user narrows the scope.
-- If GitHub Pages cannot be published because of plan or visibility limits, the skill should leave the repo in a ready-to-publish state and document the blocker.
-- When docs or another user-facing surface change, verify the structure in source, config, and build outputs instead of relying on build success alone.
-- It is based on practical repository work, including the publishing flow used for `logged-in-google-chrome-skill`.
+- `完全整備` means "finish everything meaningful", while `最適整備` means "right-size the work to the repo"
+- if GitHub Pages cannot be published because of plan or visibility limits, the skill should leave the repo in a ready-to-publish state and document the blocker
+- if a Pages deploy fails because the site does not exist yet, prefer workflow-based enablement first and use `gh api repos/OWNER/REPO/pages -X POST -f build_type=workflow` when manual creation is needed
+- when docs or another user-facing surface change, verify the structure in source, config, and build outputs instead of relying on build success alone
+- it is based on practical repository work, including real publishing and failure-recovery flows

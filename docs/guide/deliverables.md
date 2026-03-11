@@ -13,6 +13,7 @@ This skill often produces:
 - flat, geometric SVG icon work that can scale from favicon to hero usage
 - repository homepage and topic recommendations
 - QA notes covering what was structurally checked in source, config, and build outputs
+- remote creation, first push, or Pages enablement when `完全整備` makes those steps part of the natural finish line
 
 ## README Improvements
 
@@ -36,6 +37,8 @@ When the user does not explicitly ask for a partial task, the expected finish li
 - push to the configured remote when access is available
 
 If the final publish step is blocked by plan, permissions, or visibility, the repository should still be left in the closest possible ready state with that blocker documented.
+
+When the user explicitly asks for `最適整備`, treat this list as optional candidates rather than mandatory outputs and choose only the pieces that materially help the repo.
 
 ## Bilingual Docs Pattern
 

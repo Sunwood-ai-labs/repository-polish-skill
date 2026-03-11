@@ -1,6 +1,6 @@
 ---
 name: repository-polish
-description: Polish and productize a repository by improving its README, bilingual documentation, GitHub Pages or VitePress docs, CI/CD, repository metadata, and public-facing structure. Use when Codex is asked to clean up a repo, prepare it for release, add docs, add Pages deployment, improve GitHub presentation, or turn an internal project into a reusable public repository. Also use it when the repo work must be carried through verification, signoff, commit, and push instead of stopping after the first visible deliverable.
+description: Polish and productize a repository by improving its README, bilingual documentation, GitHub Pages or VitePress docs, CI/CD, repository metadata, and public-facing structure. Use when Codex is asked to clean up a repo, prepare it for release, add docs, add Pages deployment, improve GitHub presentation, or turn an internal project into a reusable public repository. Also use it when the repo work must be carried through verification, signoff, commit, push, and final-mile publishing work instead of stopping after the first visible deliverable. If the user says `完全整備`, treat that as an explicit full-polish mode and finish every meaningful deliverable end-to-end. If the user says `最適整備`, treat that as a right-sized mode and choose the smallest high-value set of improvements that fits the repository.
 ---
 
 # Repository Polish
@@ -21,6 +21,36 @@ Turn an existing repository into a clean, public-facing, documented project.
 7. Finish the job end-to-end instead of stopping after the first visible improvement.
 8. When you need to run Python in the target repository, prefer `uv run ...` instead of raw `python ...`.
 
+## Polish Modes
+
+Choose the mode from the user's wording before deciding scope.
+
+### `完全整備`
+
+Treat `完全整備` as an explicit instruction to do the whole job, not as a hint to pick a tasteful subset.
+
+In this mode:
+
+- do not silently downscope because the repo looks small or already decent
+- carry the work to the highest-value finished state available in the environment
+- include final-mile work such as remote creation, push, Pages enablement, metadata updates, and workflow repair when those steps are needed to make the repo actually finished and credentials or auth are available
+- only stop short when a real blocker remains, such as missing auth, missing permissions, plan limits, or a risky irreversible choice that truly needs confirmation
+
+### `最適整備`
+
+Treat `最適整備` as a right-sized polish pass.
+
+In this mode:
+
+- inspect the repo first and choose the smallest coherent set of improvements that gives the best public-facing result
+- add docs, Pages, or extra surfaces only when they materially help this repository
+- prefer a stronger README over forced multi-page docs when the repo does not benefit from more structure
+- still finish the chosen scope end-to-end, including QA and commit/push work when relevant
+
+### No explicit mode
+
+If the user does not name a mode, keep the existing default: treat repo polish as a full public-facing finish unless the user explicitly narrows the scope.
+
 ## Default Completion Rule
 
 When the user asks to polish a repository and does not give a limiting instruction, complete the full polish path:
@@ -34,6 +64,7 @@ When the user asks to polish a repository and does not give a limiting instructi
 - run codebase QA for each changed user-facing deliverable
 - commit in small recoverable steps
 - push when a remote is configured and push access is available
+- if a public-facing finish needs a remote or Pages site and auth is available, treat creating or enabling them as in-scope final-mile work instead of optional cleanup
 
 Do not stop early just because one visible deliverable is done. Only stop short when:
 
@@ -42,6 +73,8 @@ Do not stop early just because one visible deliverable is done. Only stop short 
 - a platform limitation blocks the final step
 
 If a platform limitation blocks the last mile, still complete everything else, document the blocker clearly, and leave the repository in the closest possible ready state.
+
+When `完全整備` is explicitly requested, bias strongly toward doing the final-mile work yourself before calling the repo finished.
 
 ## Common Scope
 
@@ -121,6 +154,8 @@ Use that output to identify:
 - missing GitHub workflows
 - missing metadata like homepage or topics
 - whether Node is available for a docs build
+- whether a remote exists
+- whether a Pages site already exists when docs publishing is relevant
 
 ### 2. Keep the structure coherent
 
@@ -185,7 +220,9 @@ If the repository remains private and the current GitHub plan does not support P
 Before declaring the task done, check whether the repository has reached the highest-value stopping point available in the current environment:
 
 - if a remote exists and credentials are available, push
+- if no remote exists but the user asked for `完全整備` and auth is available, create the remote repository when that is the natural finish line
 - if workflows were added, make sure they at least start correctly or are intentionally gated
+- if Pages deployment is part of the finish line, make sure the Pages site exists, enable it when auth is available, and repair workflow-based enablement instead of leaving a failing deploy job behind
 - if a publish step is blocked by plan or permissions, document that exact blocker and leave everything else ready
 - summarize what was completed, what evidence was checked, and what exact final step still depends on the user or platform
 
