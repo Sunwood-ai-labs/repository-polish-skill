@@ -25,7 +25,7 @@ features:
   - title: Pages と CI の整備
     details: VitePress、GitHub Actions、GitHub Pages を使って docs の公開導線を整えます。
   - title: 最後まで完走
-    details: metadata 更新、検証、commit、push、blocker の記録まで、ユーザーが範囲を狭めない限り最後まで進めます。
+    details: metadata 更新、検証、staged payload の確認、commit、push、blocker の記録まで、ユーザーが範囲を狭めない限り最後まで進めます。
 ---
 
 ## 概要

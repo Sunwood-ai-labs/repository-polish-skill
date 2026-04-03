@@ -31,6 +31,7 @@ Always verify the repository mechanically:
 - workflow triggers, paths, and artifact upload directories
 - Pages site enablement when docs deployment is part of the claimed finish line
 - metadata updates when credentials are available
+- staged file sizes, accidental binaries, and bulky generated artifacts before commit and push
 - git status after commit and push work
 
 ## 3. Run codebase QA when a user-facing surface changed
@@ -63,5 +64,6 @@ You are ready to close out only when:
 - each final claim maps to a concrete check
 - the finish line matches the requested mode, especially when `完全整備` forbids a silent downscope
 - the highest-value remaining step is either completed or blocked by a clear external limitation
+- any warned or blocked staged payload entry is resolved or explicitly documented before push
 - the final response names the blocker if one remains
 - the response does not imply visual or browser QA that you did not actually perform

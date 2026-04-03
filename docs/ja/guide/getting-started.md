@@ -30,6 +30,16 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 
 この出力から、足りないもの、触らない方がいいもの、remote の有無、docs 公開が絡むなら Pages の有効化状況を判断します。
 
+## GitHub 向け commit 前の確認
+
+GitHub に送る前提の commit では、ステージ済みファイルの容量を確認します。
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\check_commit_payload.ps1 -RepoPath D:\Prj\some-repo
+```
+
+既定では 50 MiB 超で review、100 MiB 超で block します。巨大なバイナリ、archive、依存ディレクトリ、build output は、意図した deliverable でない限り commit から外します。
+
 ## 基本原則
 
 要求された mode に合わせて深さを決め、その選んだ scope を最後までやり切ります。
@@ -39,13 +49,14 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 1. repo を理解する
 2. landing experience を改善する
 3. docs は役立つときに足す。ただし `完全整備` なら full path を優先する
-4. signoff 前に主張を検証する
+4. signoff 前に主張を検証し、commit 前に staged payload も確認する
 
 ## 主な参照先
 
 skill 使用中は次のファイルを参照します。
 
 - `SKILL.md`
+- `scripts/check_commit_payload.ps1`
 - `references/repository-checklist.md`
 - `references/qa-signoff.md`
 - `references/bilingual-docs-pattern.md`

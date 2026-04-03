@@ -18,8 +18,9 @@ Turn an existing repository into a clean, public-facing, documented project.
 4. Unless the user explicitly asks for a narrow partial update, treat "polish this repo" as a request to carry the repository through a complete public-facing finish.
 5. Use codebase QA when you add or change a user-facing surface such as VitePress docs, a docs landing page, or another documentation UI.
 6. Verify each user-facing addition locally when possible before pushing.
-7. Finish the job end-to-end instead of stopping after the first visible improvement.
-8. When you need to run Python in the target repository, prefer `uv run ...` instead of raw `python ...`.
+7. Before each GitHub-bound commit, inspect the staged payload and keep bulky binaries, archives, dependency directories, build outputs, and other large generated artifacts out of the repository unless they are intentional deliverables.
+8. Finish the job end-to-end instead of stopping after the first visible improvement.
+9. When you need to run Python in the target repository, prefer `uv run ...` instead of raw `python ...`.
 
 ## Polish Modes
 
@@ -62,6 +63,7 @@ When the user asks to polish a repository and does not give a limiting instructi
 - update repository metadata such as description, homepage, and topics when auth is available
 - run structural QA for each changed deliverable
 - run codebase QA for each changed user-facing deliverable
+- inspect the staged payload before each GitHub-bound commit and unstage oversized files that should not live in the repository
 - commit in small recoverable steps
 - push when a remote is configured and push access is available
 - if a public-facing finish needs a remote or Pages site and auth is available, treat creating or enabling them as in-scope final-mile work instead of optional cleanup
@@ -123,6 +125,7 @@ Always verify the repository mechanically, even when no browser QA is needed:
 - Python helper commands prefer `uv run` when Python execution is needed
 - workflow paths, triggers, artifact directories, and Pages base configuration
 - metadata changes such as homepage, description, and topics when auth is available
+- staged file sizes, total staged payload, and accidental large artifacts before commit and push
 - git status after commits and push attempts
 
 ### 3. Codebase QA for changed user-facing surfaces
@@ -213,6 +216,7 @@ If the repository remains private and the current GitHub plan does not support P
 - confirm GitHub workflow paths are correct
 - confirm repository metadata is set when auth is available
 - run codebase QA for changed README, docs, workflows, and metadata claims
+- confirm the staged commit does not include oversized files or unnecessary generated artifacts before commit and push
 - confirm the repo remains clean after commits and push attempts
 
 ### 7. Close out at the actual finish line
@@ -230,6 +234,9 @@ Before declaring the task done, check whether the repository has reached the hig
 
 When committing repository polish work:
 
+- run `powershell -ExecutionPolicy Bypass -File .\scripts\check_commit_payload.ps1 -RepoPath D:\Prj\some-repo` before GitHub-bound commits
+- review files above the warning threshold and do not commit files above the block threshold unless the user explicitly asked for them and their size was justified
+- never commit large generated files, dependency directories, build artifacts, or other bulky files just because they were present in the working tree
 - write commit messages in English
 - prefix the title with an emoji
 - include about three bullet lines in the body

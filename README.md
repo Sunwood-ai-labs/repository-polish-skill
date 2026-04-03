@@ -34,6 +34,7 @@ Turn an existing repository into a cleaner, more public-facing project. This ski
 - tighten public-facing details such as badges, homepage links, topics, and section structure
 - verify the result with structural QA and codebase signoff when user-facing surfaces change
 - check that README and docs structure stay readable, parallel, and easy to scan
+- review staged file sizes before GitHub-bound commits and keep bulky artifacts out of Git
 - prefer `uv run` for Python execution when Python helpers are involved
 
 ## Default Behavior
@@ -47,6 +48,7 @@ That usually means:
 - docs workflows and Pages setup when relevant
 - repository metadata such as description, homepage, and topics
 - local verification, centered on source, config, and build-output signoff
+- staged payload review before GitHub-bound commits
 - commit and push when access is available
 
 If the very last step is blocked by plan, permissions, or repo visibility, the skill should still finish everything else and document the blocker clearly instead of stopping early.
@@ -80,6 +82,7 @@ repository-polish-skill/
 |  |- qa-signoff.md
 |  `- repository-checklist.md
 |- scripts/
+|  |- check_commit_payload.ps1
 |  `- collect_repo_state.ps1
 `- docs/
    |- .vitepress/
@@ -96,7 +99,15 @@ repository-polish-skill/
 powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoPath D:\Prj\some-repo
 ```
 
-### 2. Use the skill in Codex
+### 2. Check staged payload before GitHub-bound commits
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\check_commit_payload.ps1 -RepoPath D:\Prj\some-repo
+```
+
+By default the helper reviews staged files at 50 MiB and blocks them at 100 MiB. Large binaries, archives, dependency folders, and build outputs should stay out of Git unless they are intentional deliverables.
+
+### 3. Use the skill in Codex
 
 - `Use $repository-polish to clean up this repo and add a stronger README.`
 - `Use $repository-polish to add bilingual docs and GitHub Pages deployment.`
@@ -131,4 +142,5 @@ npm run docs:dev
 - if GitHub Pages cannot be published because of plan or visibility limits, the skill should leave the repo in a ready-to-publish state and document the blocker
 - if a Pages deploy fails because the site does not exist yet, prefer workflow-based enablement first and use `gh api repos/OWNER/REPO/pages -X POST -f build_type=workflow` when manual creation is needed
 - when docs or another user-facing surface change, verify the structure in source, config, and build outputs instead of relying on build success alone
+- for GitHub-bound commits, inspect the staged payload first and do not commit unexpectedly large files
 - it is based on practical repository work, including real publishing and failure-recovery flows

@@ -17,10 +17,11 @@ Ask Codex to use this skill with prompts like:
 3. Write a QA inventory covering requested deliverables, changed artifacts, and final-response claims.
 4. Choose the polish mode before deciding scope.
 5. In `最適整備`, choose the smallest coherent plan that satisfies the request.
-6. In default mode or `完全整備`, continue through docs, workflows, metadata, verification, commit, and push.
+6. In default mode or `完全整備`, continue through docs, workflows, metadata, verification, staged payload checks, commit, and push.
 7. If `完全整備` needs a remote, Pages enablement, or publish-step repair, treat that as in-scope finish-line work when auth is available.
-8. If you changed a user-facing surface, run codebase QA against source, config, and build outputs.
-9. If a last-mile blocker appears, complete everything else and document the blocker clearly.
+8. Before GitHub-bound commits, run `powershell -ExecutionPolicy Bypass -File .\scripts\check_commit_payload.ps1 -RepoPath D:\Prj\some-repo` and remove unexpectedly large files from the staged set.
+9. If you changed a user-facing surface, run codebase QA against source, config, and build outputs.
+10. If a last-mile blocker appears, complete everything else and document the blocker clearly.
 
 ## Good Skill Behavior
 
@@ -30,6 +31,7 @@ Ask Codex to use this skill with prompts like:
 - create a reusable SVG identity asset when the repo lacks header or hero art
 - keep generated SVG icons flat, geometric, and informed by Google Fonts icons and Material Symbols without copying existing logos
 - verify URLs, badges, workflow paths, Pages configuration, and source-level docs structure before pushing
+- check staged file sizes before GitHub-bound commits and keep bulky generated files out of the commit set
 - verify README and docs structure, heading order, and locale parity before signoff
 - use emoji-prefixed `##` headings in README files when that improves readability
 - use `uv run` for Python commands instead of raw `python`

@@ -25,7 +25,7 @@ features:
   - title: Pages and CI Delivery
     details: Add VitePress, GitHub Actions, and GitHub Pages deployment so docs are easy to browse and keep updated.
   - title: Finish the Last Mile
-    details: Carry the repo through metadata, verification, commit, push, and documented blockers when the user has not limited scope.
+    details: Carry the repo through metadata, verification, staged payload checks, commit, push, and documented blockers when the user has not limited scope.
 ---
 
 ## Overview

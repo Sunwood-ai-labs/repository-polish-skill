@@ -13,6 +13,7 @@ Typical scope:
 - GitHub Pages deployment with Actions
 - cleaner repo metadata and navigation
 - structural QA and codebase signoff before closeout
+- staged payload size review before GitHub-bound commits
 - `uv run` for Python helpers when Python is needed
 
 ## Polish Modes
@@ -32,6 +33,16 @@ powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoP
 Use the output to decide what is missing, what should stay untouched, whether a remote exists,
 and whether Pages is already enabled when docs publishing matters.
 
+## Before GitHub-Bound Commits
+
+Check staged file sizes before you commit work that is meant to land on GitHub:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\check_commit_payload.ps1 -RepoPath D:\Prj\some-repo
+```
+
+The helper reviews staged files at 50 MiB and blocks them at 100 MiB by default. Remove large binaries, archives, dependency directories, and build outputs from the commit unless they are intentional deliverables.
+
 ## Core Principle
 
 Match the polish depth to the requested mode, then finish that chosen scope end-to-end.
@@ -41,13 +52,14 @@ That usually means:
 1. understand the repo
 2. improve the landing experience
 3. add docs only when they help, unless `完全整備` explicitly asks for the full path
-4. verify every claim before signoff
+4. verify every claim before signoff, and verify staged file sizes before commit
 
 ## Main References
 
 Check these repository files while using the skill:
 
 - `SKILL.md`
+- `scripts/check_commit_payload.ps1`
 - `references/repository-checklist.md`
 - `references/qa-signoff.md`
 - `references/bilingual-docs-pattern.md`

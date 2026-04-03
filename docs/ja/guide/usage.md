@@ -17,7 +17,7 @@ Codex に対して、次のように使います。
 3. 要求、変更物、最終 claim に対応する QA inventory を書く
 4. scope を決める前に polish mode を決める
 5. `最適整備` なら、その repo に合う最小の coherent plan を選ぶ
-6. default または `完全整備` なら、docs、workflow、metadata、検証、commit、push まで進める
+6. default または `完全整備` なら、docs、workflow、metadata、検証、staged payload の確認、commit、push まで進める
 7. `完全整備` で remote、Pages enablement、publish 修復が必要なら、auth がある限り finish-line work として扱う
 8. user-facing surface を変えたら、source、config、build output で codebase QA を行う
 9. 最後の blocker が出たら、そこ以外を終わらせたうえで blocker を明記する
@@ -30,6 +30,8 @@ Codex に対して、次のように使います。
 - header や hero art がない repo では再利用可能な SVG identity asset を作る
 - 生成 SVG は平面的で幾何学的にし、既存ロゴのコピーにしない
 - push 前に URL、badge、workflow path、Pages 設定、source 上の docs 構造を確認する
+- commit 前にステージ済みファイルの容量と合計サイズを確認する
+- 巨大な生成物、依存ディレクトリ、バイナリは commit しない
 - signoff 前に README と docs の構造、見出し順、locale 対応を確認する
 - Python は raw の `python` ではなく `uv run` を優先する
 - 最終 claim を実際の QA チェックに対応づける

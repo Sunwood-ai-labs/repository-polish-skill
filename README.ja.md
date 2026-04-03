@@ -34,6 +34,7 @@
 - badge、homepage、topics、セクション構成などの公開向け品質を整える
 - user-facing surface を変えたときに structural QA と codebase signoff を行う
 - README と docs の構造が読みやすく、対応関係が分かる状態を保つ
+- GitHub に push する前提の commit では、ステージ済みファイルの容量を確認し、巨大なファイルを Git に入れない
 - Python が関わるときは raw の `python` ではなく `uv run` を優先する
 
 ## 既定動作
@@ -47,6 +48,7 @@
 - 必要に応じた docs workflow と Pages 設定
 - description、homepage、topics などの metadata 更新
 - source、config、build output を中心にしたローカル検証
+- GitHub に push する前提の staged payload 確認
 - 実行可能なら commit と push
 
 最後の一歩だけが plan、権限、visibility などで塞がれているなら、そこ以外は全部終わらせて blocker を明記します。
@@ -80,6 +82,7 @@ repository-polish-skill/
 |  |- qa-signoff.md
 |  `- repository-checklist.md
 |- scripts/
+|  |- check_commit_payload.ps1
 |  `- collect_repo_state.ps1
 `- docs/
    |- .vitepress/
@@ -96,7 +99,15 @@ repository-polish-skill/
 powershell -ExecutionPolicy Bypass -File .\scripts\collect_repo_state.ps1 -RepoPath D:\Prj\some-repo
 ```
 
-### 2. Codex から skill を使う
+### 2. GitHub 向け commit 前に staged payload を確認する
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\check_commit_payload.ps1 -RepoPath D:\Prj\some-repo
+```
+
+既定では 50 MiB 超で review、100 MiB 超で block します。巨大なバイナリ、archive、依存ディレクトリ、build output は、意図した deliverable でない限り Git に入れません。
+
+### 3. Codex から skill を使う
 
 - `Use $repository-polish to clean up this repo and add a stronger README.`
 - `Use $repository-polish to add bilingual docs and GitHub Pages deployment.`
@@ -131,4 +142,5 @@ npm run docs:dev
 - GitHub Pages が plan や visibility の都合で公開できないなら、公開直前の ready state まで整えて blocker を残します
 - Pages deploy が「Pages site がない」で落ちたら、まず workflow 側 enablement を使い、それでも足りなければ `gh api repos/OWNER/REPO/pages -X POST -f build_type=workflow` を使います
 - docs など user-facing surface を変えたときは、build 成功だけで終わらせず source / config / build output を見て検証します
+- GitHub に push する前提の commit では、ステージ済みファイルの容量と合計サイズを確認し、巨大ファイルは commit しません
 - 実運用で得た失敗や改善点を反映し続ける前提の skill です

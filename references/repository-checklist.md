@@ -91,4 +91,5 @@ Use this checklist when polishing a repository.
 - README and docs formatting are readable and structurally coherent
 - generated SVG identity assets are wired where the final claim says they are used
 - final claims only mention checks that were actually performed
+- staged files were reviewed for size and oversized files were excluded from the final commit set
 - git status is clean after commit and push

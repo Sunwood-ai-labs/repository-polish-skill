@@ -60,7 +60,15 @@ Use the homepage field as the repository Website value on GitHub. For docs-drive
 
 In `完全整備`, leave this metadata filled in instead of stopping after the code changes are pushed.
 
-## Commit Style
+## Commit Gate and Style
+
+Before committing for GitHub, inspect the staged payload:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\check_commit_payload.ps1 -RepoPath D:\Prj\some-repo
+```
+
+By default the helper reviews staged files at 50 MiB and blocks them at 100 MiB. Keep large binaries, archives, dependency folders, and generated outputs out of the repository unless they are intentional release assets.
 
 Use English commit messages with:
 
